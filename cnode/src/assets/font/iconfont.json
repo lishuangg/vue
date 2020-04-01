@@ -1,0 +1,149 @@
+{
+  "id": "1727694",
+  "name": "wangyiyun",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "网易云Vuecli项目图标",
+  "glyphs": [
+    {
+      "icon_id": "428024",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "1447738",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "5257307",
+      "name": "儿童耳鼻喉-声音异常",
+      "font_class": "ertongerbihou-shengyinyichang",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "6776386",
+      "name": "声音_实体",
+      "font_class": "shengyin_shiti",
+      "unicode": "eca5",
+      "unicode_decimal": 60581
+    },
+    {
+      "icon_id": "7417086",
+      "name": "上一首",
+      "font_class": "shangyishou",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "7417092",
+      "name": "下一首",
+      "font_class": "xiayishou",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "13137519",
+      "name": "歌词未点击",
+      "font_class": "geciweidianji",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "1301391",
+      "name": "衣服",
+      "font_class": "yifu",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "6010906",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "11391546",
+      "name": "信息",
+      "font_class": "xinxi",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "12751548",
+      "name": "设置",
+      "font_class": "shezhi_huaban",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "577350",
+      "name": "朋友",
+      "font_class": "pengyou",
+      "unicode": "e746",
+      "unicode_decimal": 59206
+    },
+    {
+      "icon_id": "3878673",
+      "name": "音乐",
+      "font_class": "music",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "4166109",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "4294089",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e78e",
+      "unicode_decimal": 59278
+    },
+    {
+      "icon_id": "7461695",
+      "name": "云盘",
+      "font_class": "yunpan",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "10622217",
+      "name": "音乐",
+      "font_class": "dilanxianxingiconyihuifu_huabanfuben",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "11372739",
+      "name": "直播",
+      "font_class": "zhibo",
+      "unicode": "e8c1",
+      "unicode_decimal": 59585
+    },
+    {
+      "icon_id": "11520120",
+      "name": "直播",
+      "font_class": "zhibo1",
+      "unicode": "e74f",
+      "unicode_decimal": 59215
+    },
+    {
+      "icon_id": "11748259",
+      "name": "电波心电图",
+      "font_class": "dianboxindiantu",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    }
+  ]
+}

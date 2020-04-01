@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@/components/Home';
-import Newhand from '@/components/Newhand';
-import Api from '@/components/Api';
-import About from '@/components/About';
-import Register from '@/components/Register';
-import Login from '@/components/Login';
-import Article from '@/components/Article';
+import findMusic from '@/components/recommend/findMusic';
+import privateFM from '@/components/recommend/privateFM';
+import lookLive from '@/components/recommend/lookLive';
+import video from '@/components/recommend/video';
+import friend from '@/components/recommend/friend';
+import localMusic from '@/components/myMusic/localMusic';
+import download from '@/components/myMusic/download';
+import cloudDisk from '@/components/myMusic/cloudDisk';
+import collect from '@/components/myMusic/collect';
  
 Vue.use(VueRouter);
 
@@ -16,47 +18,52 @@ export default new VueRouter({
 	routes: [
 		{
 			path:'/',
-			component:Home,
+			component:findMusic,
 		},
 		{
-			path:'/home',
-			name:'home',
-			component:Home,
+			path:'/findmusic',
+			name:'findmusic',
+			component:findMusic,
 		},
 		{
-			path:'/home/:id',
-			name:'home',
-			component:Home,
+			path:'/privatefm',
+			name:'privatefm',
+			component:privateFM,
 		},
 		{
-			path:'/newhand',
-			name:'newhand',
-			component:Newhand,
+			path:'/looklive',
+			name:'looklive',
+			component:lookLive,
 		},
 		{
-			path:'/api',
-			name:'api',
-			component:Api,
+			path:'/video',
+			name:'video',
+			component:video
 		},
 		{
-			path:'/about',
-			name:'about',
-			component:About
+			path:'/friend',
+			name:'friend',
+			component:friend
 		},
 		{
-			path:'/register',
-			name:'register',
-			component:Register
+			path:'/localmusic',
+		    name:'localmusic',
+		    component: localMusic
 		},
 		{
-			path:'/login',
-			name:'login',
-			component:Login
+			path:'/download',
+			name:'download',
+			component:download
 		},
 		{
-			path:'/article/:id',
-		    name:'article',
-		    component: Article
+			path:'/clouddisk',
+			name:'clouddisk',
+			component:cloudDisk
+		},
+		{
+			path:'/collect',
+			name:'collect',
+			component:collect
 		},
 		{
 			path:'*',
