@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div id="play-bar">
 		<div class="play">
 			<button class="play-btn"><i class="iconfont icon-shangyishou"></i></button>
@@ -36,3 +36,23 @@ export default{
 .other{width:25%;display:flex;align-items:center;justify-content:space-around;}
 .icon-other{color:#888888;font-size:20px;}
 </style>
+ -->
+ 
+ <template>
+   <aplayer :audio="audio" :lrcType="0" fixed/>
+ </template>
+ 
+ <script>
+/* eslint-disable */
+ export default {
+    data() {
+	    return {
+		    audio: [],
+		};
+    },
+	created(){
+		this.audio = this.$store.state.list;
+		console.log(this.audio)
+	}
+ };
+ </script>

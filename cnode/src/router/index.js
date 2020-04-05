@@ -5,10 +5,20 @@ import privateFM from '@/components/recommend/privateFM';
 import lookLive from '@/components/recommend/lookLive';
 import video from '@/components/recommend/video';
 import friend from '@/components/recommend/friend';
+
 import localMusic from '@/components/myMusic/localMusic';
 import download from '@/components/myMusic/download';
 import cloudDisk from '@/components/myMusic/cloudDisk';
 import collect from '@/components/myMusic/collect';
+
+import recommendation from '@/components/recommend/findMusic/recommendation';
+import songSheet from '@/components/recommend/findMusic/songSheet';
+import station from '@/components/recommend/findMusic/station';
+import ranking from '@/components/recommend/findMusic/ranking';
+import singer from '@/components/recommend/findMusic/singer';
+import latestMusic from '@/components/recommend/findMusic/latestMusic';
+
+import songList from '@/components/commont/songList';
  
 Vue.use(VueRouter);
 
@@ -24,6 +34,20 @@ export default new VueRouter({
 			path:'/findmusic',
 			name:'findmusic',
 			component:findMusic,
+			children:[
+				{path:'/',component:recommendation},
+				{path:'/findmusic/recommendation',component:recommendation},
+				{path:'/findmusic/songSheet',component:songSheet},
+				{path:'/findmusic/station',component:station},
+				{path:'/findmusic/ranking',component:ranking},
+				{path:'/findmusic/singer',component:singer},
+				{path:'/findmusic/latestMusic',component:latestMusic},
+			]
+		},
+		{
+			path:'songlist',
+			name:'songlist',
+			component:songList
 		},
 		{
 			path:'/privatefm',
@@ -64,10 +88,6 @@ export default new VueRouter({
 			path:'/collect',
 			name:'collect',
 			component:collect
-		},
-		{
-			path:'*',
-			redirect:'/'
 		}
 	]
 })

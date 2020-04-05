@@ -9,10 +9,16 @@ import './assets/font/iconfont.css';
 //引入轮播图组件
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
+//引入音乐播放组件 yarn add @moefe/vue-aplayer
+import APlayer from '@moefe/vue-aplayer';
 
-Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 Vue.prototype.$http=axios
+Vue.use(VueAwesomeSwiper)
+Vue.use(APlayer, {
+  defaultCover: 'https://github.com/u3u.png',
+  productionTip: true,
+});
  
 /* eslint-disable no-new */
 new Vue({

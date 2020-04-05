@@ -6,20 +6,21 @@ Vue.use(Vuex)
 /* eslint-disable */
 const store = new Vuex.Store({
     state:{
-        list:[]
+        list:[],
+		now:{},
     },
 	mutations:{
-		increment (state,n) {
-		  state.count += n;
+		listAdd (state,n) {
+			state.now = n;
+		},
+		listPlayAll (state,n){
+			state.list.push(n);
+		},
+		listClear (state,n=0){
+			state.list.length = n;
 		}
 	},
-	actions:{
-	    aEdit(context,payload){
-	        setTimeout(()=>{
-	            context.commit('increment',payload)
-	        },2000)
-	    }
-	}
+	actions:{}
 })
 
 export default store
