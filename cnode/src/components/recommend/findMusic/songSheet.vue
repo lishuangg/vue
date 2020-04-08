@@ -9,7 +9,7 @@
 			>{{item.playlistTag.name}}</li>
 		</ul>
 		<div class="song-list">
-			<div v-for="(item,index) of data" :key="index" class="song">
+			<div v-for="(item) of data" :key="item.id" class="song">
 				<router-link :to="{ name:'songlist',query:{listId:item.id}}" class="link">
 					<div class="image">
 						<img :src="item.coverImgUrl" class="songImg"/>
@@ -42,7 +42,6 @@ export default{
 				}
 			}).then(res=>{
 				this.data=res.data.playlists;
-				console.log(this.data);
 			}).catch(err=>alert(err))
 		}
 	},
@@ -50,7 +49,6 @@ export default{
 		this.$http.get('http://localhost:3000/playlist/hot')
 		.then(res=>{
 			this.tags=res.data.tags;
-			console.log(this.tags);
 		}).catch(err=>alert(err))
 		this.getData("");
 	}

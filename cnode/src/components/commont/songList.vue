@@ -15,7 +15,7 @@
 					<span class="b-name">{{data.creator.nickname}}</span>
 				</div>
 				<div class="data-c">
-					<button class="c-play">播放全部</button>
+					<button class="c-play" @click="playAllSongs()">播放全部</button>
 					<button>分享({{data.shareCount}})</button>
 					<button>收藏({{Math.round(data.subscribedCount/10000)}}万)</button>
 					<button>下载全部</button>
@@ -34,7 +34,7 @@
 				<th class="t4">专辑</th>
 				<th class="t5">时长</th>
 			</tr>
-			<tr v-for="(item,index) of data.tracks" :key="index" @click="songClick(item.id,item.name,item.ar[0].name,item.al.picUrl)">
+			<tr v-for="(item,index) of data.tracks" :key="item.id" @click="songClick(index,item.id,item.name,item.ar[0].name,item.al.picUrl)">
 				<td class="t1">{{index+1}}</td>
 				<td class="t2">{{item.name}}</td>
 				<td class="t3">{{item.ar[0].name}}</td>
@@ -57,7 +57,9 @@ export default{
 		}
 	},
 	methods:{
-		songClick:function(id,name,artist,pic){
+		songClick:function(index,id,name,artist,pic){
+			this.$store.commit('playSong');
+			this.playAllSongs();
 			this.song.name = name;
 			this.song.artist = artist;
 			this.song.cover = pic;
@@ -65,11 +67,17 @@ export default{
 			.then(res=>{
 				this.song.url = res.data.data[0].url;
 				this.$store.commit('listAdd',this.song);
+				this.$store.commit('songIndexChange',index);
 			}).catch(err=>alert(err))
+		},
+		playAllSongs:function(){
+			this.$store.commit('listClear');
+			this.$store.commit('playSong');
+			this.$store.commit('songIndexChange',0);
+			this.$store.commit('listPlayAll',this.list);
 		}
 	},
 	created(){
-		this.$store.commit('listClear');
 		this.$http.get('http://localhost:3000/playlist/detail',{params:{id:this.songId}})
 		.then(res=>{
 			this.data=res.data.playlist;
@@ -83,7 +91,7 @@ export default{
 				this.$http.get('http://localhost:3000/song/url',{params:{id:this.data.trackIds[i].id}})
 				.then(res=>{
 					obj.url = res.data.data[0].url;
-					this.$store.commit('listPlayAll',obj);
+					this.list.push(obj);
 				}).catch(err=>alert(err))
 			}
 		}).catch(err=>alert(err))

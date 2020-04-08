@@ -14,6 +14,8 @@ import APlayer from '@moefe/vue-aplayer';
 
 Vue.config.productionTip = false
 Vue.prototype.$http=axios
+axios.defaults.baseURL = '/api'
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 Vue.use(VueAwesomeSwiper)
 Vue.use(APlayer, {
   defaultCover: 'https://github.com/u3u.png',
