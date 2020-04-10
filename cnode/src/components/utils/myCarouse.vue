@@ -16,26 +16,26 @@ export default {
 	data() {
       return {
 		imageList:[],
-        swiperOption: {
-			speed:800,
-			autoplay:2000,
-			pagination: {
-			    el:'.swiper-pagination',
-			    type:'bullets',
-			    hideOnClick:true,
-			    clickable:true
-			},
-			navigation: {
-			    nextEl:'.swiper-button-next',
-			    prevEl:'.swiper-button-prev',
-			    hideOnClick:true
-			},
-			loop:true
-        }
+       swiperOption: {
+        speed:800,
+        autoplay:2000,
+        pagination: {
+          el:'.swiper-pagination',
+          type:'bullets',
+          hideOnClick:true,
+          clickable:true
+        },
+        navigation: {
+          nextEl:'.swiper-button-next',
+          prevEl:'.swiper-button-prev',
+          hideOnClick:true
+        },
+        loop:true
+          }
       }
     },
 	created(){
-		this.$http.get('http://localhost:3000/banner')
+		this.$http.get('/banner')
 		.then(res=>{
 			this.imageList=res.data.banners
 		}).catch(err=>alert(err))

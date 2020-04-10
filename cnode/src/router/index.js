@@ -19,7 +19,8 @@ import singer from '@/components/recommend/findMusic/singer';
 import latestMusic from '@/components/recommend/findMusic/latestMusic';
 
 import songList from '@/components/commont/songList';
- 
+
+// npm install vue-router --save
 Vue.use(VueRouter);
 
 /* eslint-disable */
@@ -28,20 +29,20 @@ export default new VueRouter({
 	routes: [
 		{
 			path:'/',
-			component:findMusic,
+      redirect:'/findmusic/recommendation'
 		},
 		{
 			path:'/findmusic',
 			name:'findmusic',
+      redirect:'/findmusic/recommendation',
 			component:findMusic,
 			children:[
-				{path:'/',component:recommendation},
-				{path:'/findmusic/recommendation',component:recommendation},
-				{path:'/findmusic/songSheet',component:songSheet},
-				{path:'/findmusic/station',component:station},
-				{path:'/findmusic/ranking',component:ranking},
-				{path:'/findmusic/singer',component:singer},
-				{path:'/findmusic/latestMusic',component:latestMusic},
+				{path:'recommendation',component:recommendation},
+				{path:'songSheet',component:songSheet},
+				{path:'station',component:station},
+				{path:'ranking',component:ranking},
+				{path:'singer',component:singer},
+				{path:'latestMusic',component:latestMusic},
 			]
 		},
 		{
@@ -88,6 +89,10 @@ export default new VueRouter({
 			path:'/collect',
 			name:'collect',
 			component:collect
-		}
+		},
+    {
+    	path:'*',
+    	redirect:'/'
+    }
 	]
 })

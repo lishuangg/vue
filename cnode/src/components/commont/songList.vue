@@ -58,16 +58,17 @@ export default{
 	},
 	methods:{
 		songClick:function(index,id,name,artist,pic){
-			this.$store.commit('playSong');
-			this.playAllSongs();
+			this.$store.commit('listClear');
+      this.$store.commit('listPlayAll',this.list);
 			this.song.name = name;
 			this.song.artist = artist;
 			this.song.cover = pic;
-			this.$http.get('http://localhost:3000/song/url',{params:{id:id}})
+			this.$http.get('/song/url',{params:{id:id}})
 			.then(res=>{
 				this.song.url = res.data.data[0].url;
 				this.$store.commit('listAdd',this.song);
 				this.$store.commit('songIndexChange',index);
+        this.$store.commit('playSong');
 			}).catch(err=>alert(err))
 		},
 		playAllSongs:function(){
@@ -78,7 +79,7 @@ export default{
 		}
 	},
 	created(){
-		this.$http.get('http://localhost:3000/playlist/detail',{params:{id:this.songId}})
+		this.$http.get('/playlist/detail',{params:{id:this.songId}})
 		.then(res=>{
 			this.data=res.data.playlist;
 			for(var i=0;i<this.data.trackCount;i++){
@@ -88,7 +89,7 @@ export default{
 					artist:this.data.tracks[i].ar[0].name,
 					cover:this.data.tracks[i].al.picUrl,
 				}
-				this.$http.get('http://localhost:3000/song/url',{params:{id:this.data.trackIds[i].id}})
+				this.$http.get('/song/url',{params:{id:this.data.trackIds[i].id}})
 				.then(res=>{
 					obj.url = res.data.data[0].url;
 					this.list.push(obj);

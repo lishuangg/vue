@@ -34,7 +34,7 @@ export default{
 	},
 	methods:{
 		getData:function(tag){
-			this.$http.get('http://localhost:3000/top/playlist',{
+			this.$http.get('/top/playlist',{
 				params:{
 					order:"hot",
 					limit:32,
@@ -46,7 +46,7 @@ export default{
 		}
 	},
 	created(){
-		this.$http.get('http://localhost:3000/playlist/hot')
+		this.$http.get('/playlist/hot')
 		.then(res=>{
 			this.tags=res.data.tags;
 		}).catch(err=>alert(err))

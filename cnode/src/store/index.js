@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+// npm install vuex --save
 Vue.use(Vuex)
 
 /* eslint-disable */

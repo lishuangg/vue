@@ -31,7 +31,7 @@ export default{
 		}
 	},
 	created(){
-		this.$http.get('http://localhost:3000/personalized?limit=10')
+    this.$http.get('/personalized',{params:{limit:10}})
 		.then(res=>{
 			this.songList=res.data.result
 		}).catch(err=>alert(err))
