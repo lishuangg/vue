@@ -15,7 +15,11 @@ import APlayer from '@moefe/vue-aplayer';
 
 Vue.config.productionTip = false
 Vue.prototype.$http=axios
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = process.env.VUE_APP_BASE_API
+// dev.env.js（开发环境）VUE_APP_BASE_API:'"/api"',
+// prod.env.js(生产环境）VUE_APP_BASE_API:'"http://192.168.xx:xxx"' ,项目api地址
+// VUE_APP_BASE_API可以通过process.env.VUE_APP_BASE_API来访问。
+
 axios.defaults.headers={'Content-Type':'application/x-www-form-urlencoded'}
 Vue.use(VueAwesomeSwiper)
 Vue.use(APlayer, {
