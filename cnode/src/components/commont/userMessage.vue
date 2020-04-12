@@ -37,7 +37,6 @@ export default{
   props:['message'],
   methods:{
     loginout:function(){
-      this.$store.commit('clearUser');
       this.$emit('loginout');
     }
   }

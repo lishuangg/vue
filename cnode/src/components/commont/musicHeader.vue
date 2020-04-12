@@ -54,12 +54,13 @@ export default {
       this.dialogTableVisible = true;
     },
     loginHandle:function(){
-      this.getUserMsg(this.$store.state.userId);
       this.dialogTableVisible = false;
-      this.$store.commit("login",true);
+      // this.$store.commit("login",true);
+      this.getUserMsg(this.$store.state.userId);
     },
     userLoginout:function(){
       this.loginUserVisible = false;
+      this.$store.commit('clearUser');
     },
     getUserMsg:function(id){
       this.$http.get('/user/detail',{params:{uid:id}})

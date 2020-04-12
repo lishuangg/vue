@@ -15,15 +15,13 @@ const store = new Vuex.Store({
     },
 	mutations:{
     login (state,n){
-      state.login = n;
-    },
-    getUser (state,n){
       state.userId = n;
       localStorage.setItem('songUserId',JSON.stringify(n));
+      state.login = true;
     },
     clearUser (state){
       state.userId = '';
-      login:false;
+      state.login = false;
       localStorage.removeItem('songUserId');
     },
 		listAdd (state,n) {

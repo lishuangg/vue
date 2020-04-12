@@ -30,9 +30,8 @@
           if(res.data.code == '502'){
             this.$message.error(res.data.message);
           }else{
-            this.$store.commit("login",true);
+            this.$store.commit('login',res.data.profile.userId);
             this.$emit("submitLogin");
-            this.$store.commit('getUser',res.data.profile.userId);
           }
         }).catch(err=>{
           this.$message.error('手机号不正确或者未注册');
