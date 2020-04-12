@@ -6,6 +6,20 @@
   "description": "网易云Vuecli项目图标",
   "glyphs": [
     {
+      "icon_id": "1854597",
+      "name": "符号-锁",
+      "font_class": "suo",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
+      "icon_id": "2019081",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e7b8",
+      "unicode_decimal": 59320
+    },
+    {
       "icon_id": "428024",
       "name": "列表",
       "font_class": "liebiao",

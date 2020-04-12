@@ -29,6 +29,7 @@ export default new VueRouter({
 	routes: [
 		{
 			path:'/',
+      component:findMusic,
       redirect:'/findmusic/recommendation'
 		},
 		{
