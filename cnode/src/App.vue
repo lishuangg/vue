@@ -1,8 +1,8 @@
 <template>
  <div id="root">
-	<music-header></music-header>
+	<music-header @reviseInforHandle="reviseUserInfor()"></music-header>
 	<header></header>
-	<div id="menu">
+	<div id="menu" style="overflow:auto">
 		<span>推荐</span>
 		<div class="recommend">
 			<router-link to="/findmusic" active-class="active" class="link">
@@ -36,13 +36,20 @@
 				<i class="iconfont icon-shoucang"></i>我的收藏
 			</router-link>
 		</div>
-		<span>我创建的歌单</span>
-		<div class="playlist-create"></div>
-		<span>我收藏的歌单</span>
-		<div class="playlist-collect"></div>
+    <el-collapse accordion>
+      <el-collapse-item title="我创建的歌单">
+        <div v-for="item in create" :key="item.id" @click="goSongList(item.id)">
+        	<i class="el-icon-s-unfold"></i>{{item.name}}
+        </div>
+      </el-collapse-item>
+      <el-collapse-item title="我收藏的歌单">
+        <div v-for="item of collect" :key="item.id"><i class="el-icon-s-unfold"></i>{{item.name}}</div>
+      </el-collapse-item>
+      <footer></footer>
+    </el-collapse>
 	</div>
 	<div class="content">
-		<router-view></router-view>
+		<router-view :key="$route.fullPath"></router-view>
 		<footer></footer>
 	</div>
 	<play-bar></play-bar>
@@ -58,7 +65,36 @@ export default{
 	components:{
 		'music-header':musicHeader,
 		'play-bar':playBar
-	}
+	},
+  data(){
+    return {
+      create:[],
+      collect:[],
+      id:''
+    }
+  },
+  methods:{
+    reviseUserInfor:function(){
+      this.$router.replace({path:'/information'});
+    },
+    goSongList:function(id){
+      this.id = id;
+      this.$router.replace({ name:'songlist',query:{listId:id}});
+    }
+  },
+  created(){
+    this.$http.get('/user/playlist',{params:{uid:this.$store.state.userId}})
+    .then(res=>{
+      var list = res.data.playlist;
+      for(var i in list){
+        if(list[i].subscribed){
+          this.collect.push({id:list[i].id,name:list[i].name})
+        }else{
+          this.create.push({id:list[i].id,name:list[i].name})
+        }
+      }
+    }).catch(err=>alert(err))
+  },
 }
 </script>
 
@@ -68,10 +104,10 @@ export default{
 #menu{position:fixed;top:50px;left:0;width:20%;height:100%;border-right:5px solid #dddddd;display:flex;flex-direction:column;}
 #menu>span{color:#666666;padding:10px;}
 .recommend,.my-music{display:flex;flex-direction:column;}
-.link{text-decoration:none;width:80%;height:30px;padding:5px 10%;line-height:30px;color:#666666;}
+.link{text-decoration:none;width:80%;height:24px;padding:5px 10%;line-height:24px;color:#666666;}
 .active{color:#000000;background:#dddddd;border-left:5px solid firebrick}
 .iconfont{font-size:18px;padding-right:8px}
 .content{width:78%;margin-left:22%;}
 header{width:100%;height:50px;}
-footer{width:100%;height:70px;}
+footer{width:100%;height:120px;}
 </style>

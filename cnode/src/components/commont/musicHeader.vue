@@ -9,7 +9,7 @@
           width="300"
           v-model="loginUserVisible"
           trigger="click">
-          <user-message :message="this.user.profile" @loginout="userLoginout()"></user-message>
+          <user-message :message="this.user.profile" @loginout="userLoginout()" @reviseInfor="reviseInforHandle()"></user-message>
           <el-button class="login" slot="reference">
             <img class="pic" :src="this.user.profile.avatarUrl" alt="">
             <span class="font">{{this.user.profile.nickname.length>5?this.user.profile.nickname.slice(0,5)+'...':this.user.profile.nickname}}</span>
@@ -58,6 +58,10 @@ export default {
       // this.$store.commit("login",true);
       this.getUserMsg(this.$store.state.userId);
     },
+    reviseInforHandle:function(){
+      this.loginUserVisible = false;
+      this.$emit("reviseInforHandle");
+    },
     userLoginout:function(){
       this.loginUserVisible = false;
       this.$store.commit('clearUser');
@@ -66,7 +70,6 @@ export default {
       this.$http.get('/user/detail',{params:{uid:id}})
       .then(res=>{
         this.user = res.data;
-        console.log(res.data.profile);
       }).catch(err=>alert(err))
     }
   },

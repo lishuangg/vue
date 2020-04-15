@@ -8,7 +8,7 @@
 				<div class="data-a">
 					<h2 class="a-title">{{data.name}}</h2>
 					<span class="trackCount">歌曲数<br/>{{data.trackCount}}</span>
-					<span class="playCount">播放数<br/>{{Math.round(data.playCount/10000)}}万</span>
+					<span class="playCount">播放数<br/>{{data.playCount}}</span>
 				</div>
 				<div class="data-b">
 					<img :src="data.creator.avatarUrl" class="b-img"/>
@@ -17,12 +17,12 @@
 				<div class="data-c">
 					<button class="c-play" @click="playAllSongs()">播放全部</button>
 					<button>分享({{data.shareCount}})</button>
-					<button>收藏({{Math.round(data.subscribedCount/10000)}}万)</button>
+					<button>收藏({{data.subscribedCount}})</button>
 					<button>下载全部</button>
 				</div>
 				<div class="data-d">
 					<p>标签：<span v-for="(item,index) of data.tags" :key="index">{{item}}/</span></p>
-					<p>简介：{{data.description.substring(0,40)}}...</p>
+					<p>简介：{{data.description}}</p>
 				</div>
 			</div>
 		</div>
@@ -76,26 +76,29 @@ export default{
 			this.$store.commit('playSong');
 			this.$store.commit('songIndexChange',0);
 			this.$store.commit('listPlayAll',this.list);
-		}
+		},
+    getSonglist:function(id){
+      this.$http.get('/playlist/detail',{params:{id:this.songId}})
+      .then(res=>{
+        this.data=res.data.playlist;
+        for(var i=0;i<this.data.trackCount;i++){
+          let obj = {
+            id:this.data.trackIds[i].id,
+            name:this.data.tracks[i].name,
+            artist:this.data.tracks[i].ar[0].name,
+            cover:this.data.tracks[i].al.picUrl,
+          }
+          this.$http.get('/song/url',{params:{id:this.data.trackIds[i].id}})
+          .then(res=>{
+            obj.url = res.data.data[0].url;
+            this.list.push(obj);
+          }).catch(err=>alert(err))
+        }
+      }).catch(err=>alert(err))
+    }
 	},
 	created(){
-		this.$http.get('/playlist/detail',{params:{id:this.songId}})
-		.then(res=>{
-			this.data=res.data.playlist;
-			for(var i=0;i<this.data.trackCount;i++){
-				let obj = {
-					id:this.data.trackIds[i].id,
-					name:this.data.tracks[i].name,
-					artist:this.data.tracks[i].ar[0].name,
-					cover:this.data.tracks[i].al.picUrl,
-				}
-				this.$http.get('/song/url',{params:{id:this.data.trackIds[i].id}})
-				.then(res=>{
-					obj.url = res.data.data[0].url;
-					this.list.push(obj);
-				}).catch(err=>alert(err))
-			}
-		}).catch(err=>alert(err))
+		this.getSonglist(this.songId);
 	}
 }
 </script>

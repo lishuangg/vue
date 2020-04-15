@@ -19,6 +19,7 @@ import singer from '@/components/recommend/findMusic/singer';
 import latestMusic from '@/components/recommend/findMusic/latestMusic';
 
 import songList from '@/components/commont/songList';
+import information from '@/components/commont/information';
 
 // npm install vue-router --save
 Vue.use(VueRouter);
@@ -47,10 +48,15 @@ export default new VueRouter({
 			]
 		},
 		{
-			path:'songlist',
+			path:'/songlist',
 			name:'songlist',
 			component:songList
 		},
+    {
+    	path:'/information',
+    	name:'information',
+    	component:information
+    },
 		{
 			path:'/privatefm',
 			name:'privatefm',

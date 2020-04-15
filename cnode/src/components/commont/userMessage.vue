@@ -24,7 +24,7 @@
       <li>会员中心</li>
       <li>等级</li>
       <li>商城</li>
-      <li>个人信息设置</li>
+      <li><el-button class="infor" @click="reviseInfor()"><i class="el-icon-setting"></i>个人信息设置</el-button></li>
       <li>绑定社交账号</li>
     </ul>
     <el-button class="loginout" @click="loginout()">退出登录</el-button>
@@ -38,6 +38,9 @@ export default{
   methods:{
     loginout:function(){
       this.$emit('loginout');
+    },
+    reviseInfor:function(){
+      this.$emit('reviseInfor');
     }
   }
 }
@@ -56,5 +59,6 @@ ul,li{list-style:none;}
 .count{font-size:16px;font-weight:bold;color:#000000;}
 .content{margin:10px 0;}
 .content>li{line-height:30px;font-size:14px;}
+.infor{width:100%;border:none;}
 .loginout{width:100%;height:40px;border:1px solid #bbbbbb;border-radius:5px;}
 </style>
