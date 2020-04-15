@@ -43,7 +43,9 @@
         </div>
       </el-collapse-item>
       <el-collapse-item title="我收藏的歌单">
-        <div v-for="item of collect" :key="item.id"><i class="el-icon-s-unfold"></i>{{item.name}}</div>
+        <div v-for="item in collect" :key="item.id" @click="goSongList(item.id)">
+        	<i class="el-icon-s-unfold"></i>{{item.name}}
+        </div>
       </el-collapse-item>
       <footer></footer>
     </el-collapse>
