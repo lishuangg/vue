@@ -77,11 +77,11 @@ export default{
   },
   methods:{
     reviseUserInfor:function(){
-      this.$router.replace({path:'/information'});
+      this.$router.push({path:'/information'});
     },
     goSongList:function(id){
       this.id = id;
-      this.$router.replace({ name:'songlist',query:{listId:id}});
+      this.$router.push({ name:'songlist',query:{listId:id}});
     }
   },
   created(){

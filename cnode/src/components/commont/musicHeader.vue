@@ -1,6 +1,10 @@
 <template>
 	<div id="music-header">
 		<img src="@/assets/music.png"/>
+    <el-button-group>
+      <el-button type="primary" icon="el-icon-arrow-left" style="width:40px;height:28px" @click="onBack()"></el-button>
+      <el-button type="primary" style="width:40px;height:28px" @click="onNext()"><i class="el-icon-arrow-right el-icon--right"></i></el-button>
+    </el-button-group>
 		<input class="search" placeholder="搜索音乐,视频,歌词,电台"/>
 		<div class="msg">
       <div v-if="$store.state.login">
@@ -50,6 +54,12 @@ export default {
     }
   },
   methods:{
+    onBack:function(){
+      this.$router.back(-1);
+    },
+    onNext:function(){
+      this.$router.go(1);
+    },
     submitForm:function(){
       this.dialogTableVisible = true;
     },
