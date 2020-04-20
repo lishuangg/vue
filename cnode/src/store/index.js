@@ -11,7 +11,8 @@ const store = new Vuex.Store({
       list:localStorage.songList != null ? JSON.parse(localStorage.songList) : [],
       now:localStorage.songnow != null ? JSON.parse(localStorage.songnow) : {},
       songIndex:0,
-      play:false
+      play:false,
+      next:0
     },
 	mutations:{
     login (state,n){
@@ -33,6 +34,7 @@ const store = new Vuex.Store({
 		},
 		listPlayAll (state,n){
 			state.list = n;
+      console.log(state.list);
 			localStorage.setItem('songList',JSON.stringify(n))
 		},
 		listClear (state,n=0){
@@ -40,7 +42,13 @@ const store = new Vuex.Store({
 		},
 		playSong (state){
 			state.play = true;
-		}
+		},
+    nextSong (state){
+    	state.next++;
+    },
+    changeNext (state){
+      state.next = 0;
+    }
 	},
 	actions:{}
 })

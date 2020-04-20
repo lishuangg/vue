@@ -111,5 +111,5 @@ export default{
 .iconfont{font-size:18px;padding-right:8px}
 .content{width:78%;margin-left:22%;}
 header{width:100%;height:50px;}
-footer{width:100%;height:120px;}
+footer{width:100%;height:80px;}
 </style>

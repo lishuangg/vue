@@ -6,6 +6,34 @@
   "description": "网易云Vuecli项目图标",
   "glyphs": [
     {
+      "icon_id": "741255",
+      "name": "其他",
+      "font_class": "other",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "781774",
+      "name": "下一曲1-01",
+      "font_class": "xiayiqu101",
+      "unicode": "e718",
+      "unicode_decimal": 59160
+    },
+    {
+      "icon_id": "4933191",
+      "name": "心",
+      "font_class": "xin",
+      "unicode": "e6e0",
+      "unicode_decimal": 59104
+    },
+    {
+      "icon_id": "11077391",
+      "name": "垃圾桶",
+      "font_class": "lajitong",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
       "icon_id": "1854597",
       "name": "符号-锁",
       "font_class": "suo",
